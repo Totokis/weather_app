@@ -30,13 +30,14 @@ class _JuniorWeatherScreen extends State<JuniorWeatherScreen> {
   var sunrise;
   var sunset;
   String time;
+  String key;
 
   // ignore: unused_element
   _JuniorWeatherScreen({Key key, @required this.city}) : super();
 
   Future getWeather() async {
     http.Response response = await http.get(Uri.parse(
-        'http://api.openweathermap.org/data/2.5/weather?q=${this.city}&units=metric&appid=6eaf6eabfe094419b971940e92661b61'));
+        'http://api.openweathermap.org/data/2.5/weather?q=${this.city}&units=metric&appid=${this.key}'));
 
 
     var results = jsonDecode(response.body);
